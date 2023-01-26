@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,8 +39,5 @@ namespace Ass1
             public double Price { get => price; set => price = value; }
         }
 
- 
-
-
-
-    
+    }
+}
