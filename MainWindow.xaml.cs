@@ -23,8 +23,21 @@ namespace Ass1
         public MainWindow()
         {
             InitializeComponent();
-            GridView gv1 = new GridView();
-
+            DataGrid gv1 = new DataGrid();
         }
+
+        public class product
+        {
+            string name;
+            int id;
+            int kg;
+            double price;
+
+            public string Name { get => name; set => name = value; }
+            public int Id { get => id; set => id = value; }
+            public int Kg { get => kg; set => kg = value; }
+            public double Price { get => price; set => price = value; }
+        }
+
     }
 }
