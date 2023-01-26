@@ -39,6 +39,8 @@ namespace Ass1
             public double Price { get => price; set => price = value; }
         }
 
+ 
+
 
 
     
