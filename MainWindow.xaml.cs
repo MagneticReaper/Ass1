@@ -1,26 +1,13 @@
 ﻿
 using System;
-using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data.SQLite;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Ass1
 {
@@ -37,7 +24,6 @@ namespace Ass1
         Label tot;
         public MainWindow()
         {
-
             InitializeComponent();
             //db connection
             SQLiteConnection sqlite_conn;
@@ -46,7 +32,6 @@ namespace Ass1
             CreateTable(sqlite_conn);
             //update working list from db
             ReadData(sqlite_conn);
-
             //create view
             WrapPanel wp = new WrapPanel();
             dg1 = new DataGrid() { ItemsSource = list, Margin = new Thickness(10) };
@@ -69,7 +54,6 @@ namespace Ass1
 
         private void List_ListChanged(object sender, ListChangedEventArgs e)
         {
-            
             List<Product> temp = list.ToList();
             List<Product> temp2 = new List<Product>();
             //create db connection
@@ -89,21 +73,12 @@ namespace Ass1
                 sqlite_cmd.CommandText += ";";
                 sqlite_cmd.ExecuteNonQuery();
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception) { throw; }
             //try to add new products
             foreach (Product p in temp)
             {
-                try
-                {
-                    InsertData(sqlite_conn, p);
-                }
-                catch (Exception)
-                {
-                    temp2.Add(p);
-                }
+                try { InsertData(sqlite_conn, p); }
+                catch (Exception) { temp2.Add(p); }
             }
             //modify existing products
             foreach (Product p in temp2)
@@ -114,7 +89,6 @@ namespace Ass1
 
         private void Dg1_Loaded(object sender, RoutedEventArgs e)
         {
-
             dg1.Columns[2].Header = "KG available";
             dg1.Columns[3].Header = "Price per KG";
             dg1.Columns[4].Visibility = Visibility.Hidden;
@@ -130,7 +104,6 @@ namespace Ass1
             w2.SizeToContent = SizeToContent.WidthAndHeight;
             StackPanel wp = new StackPanel();
             WrapPanel sp = new WrapPanel() { Orientation = Orientation.Horizontal };
-            
             dg2 = new DataGrid() { ItemsSource = list, Margin = new Thickness(10) };
             Button sale = new Button() { Content = "Complete Transaction", Padding = new Thickness(10), Margin = new Thickness(10) };
             sale.Click += Sale_Click;
@@ -165,7 +138,6 @@ namespace Ass1
         private void W2_Loaded(object sender, RoutedEventArgs e)
         {
             w2.SizeToContent = SizeToContent.WidthAndHeight;
-
         }
 
         private void Sale_Click(object sender, RoutedEventArgs e)
@@ -175,9 +147,10 @@ namespace Ass1
                 if (p.Added > 0)
                 {
                     p.Kg = p.Kg - p.Added;
-                        p.Added = 0;
+                    p.Added = 0;
                 }
             }
+            tot.Content = "0";
         }
 
         private void Dg2_SelectedCellsChanged(object sender, EventArgs e)
@@ -276,14 +249,8 @@ namespace Ass1
             // Create a new database connection:
             sqlite_conn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True; ");
             // Open the connection:
-            try
-            {
-                sqlite_conn.Open();
-            }
-            catch (Exception)
-            {
-
-            }
+            try { sqlite_conn.Open(); }
+            catch (Exception) { }
             return sqlite_conn;
         }
 
@@ -315,10 +282,7 @@ namespace Ass1
                 sqlite_cmd.CommandText = "INSERT INTO product (name, id, kg, price) VALUES('" + newProduct.Name + "', " + newProduct.Id + ", " + newProduct.Kg + "," + newProduct.Price + "); ";
                 sqlite_cmd.ExecuteNonQuery();
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception) { throw; }
 
         }
         void UpdateData(SQLiteConnection conn, Product oldProduct)
@@ -330,10 +294,7 @@ namespace Ass1
                 sqlite_cmd.CommandText = "UPDATE product SET name = '" + oldProduct.Name + "', kg = " + oldProduct.Kg + ", price = " + oldProduct.Price + " WHERE id = " + oldProduct.Id + ";";
                 sqlite_cmd.ExecuteNonQuery();
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception) { throw; }
 
         }
 
