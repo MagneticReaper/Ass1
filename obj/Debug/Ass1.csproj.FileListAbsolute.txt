@@ -1,7 +1,6 @@
 C:\Users\remyb\source\repos\Ass1\bin\Debug\Ass1.exe.config
 C:\Users\remyb\source\repos\Ass1\bin\Debug\Ass1.exe
 C:\Users\remyb\source\repos\Ass1\bin\Debug\Ass1.pdb
-C:\Users\remyb\source\repos\Ass1\obj\Debug\Ass1.csproj.AssemblyReference.cache
 C:\Users\remyb\source\repos\Ass1\obj\Debug\MainWindow.g.cs
 C:\Users\remyb\source\repos\Ass1\obj\Debug\App.g.cs
 C:\Users\remyb\source\repos\Ass1\obj\Debug\Ass1_MarkupCompile.cache

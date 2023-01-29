@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Ass1
 {
+    //product object class
     class Product : INotifyPropertyChanged
     {
         string name;
