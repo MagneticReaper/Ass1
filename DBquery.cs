@@ -26,6 +26,7 @@ namespace Ass1
         {
             try
             {
+                // Create table named "product" and setting up the variables (Dom added)
                 SQLiteCommand sqlite_cmd;
                 string Createsql = //"DROP TABLE product; " + //for resetting db
                     "CREATE TABLE product (name VARCHAR(20), id INT UNIQUE, kg INT, price REAL)";
@@ -45,6 +46,7 @@ namespace Ass1
         {
             try
             {
+                // Commands established to insert data into the table (Dom added)
                 SQLiteCommand sqlite_cmd;
                 sqlite_cmd = conn.CreateCommand();
                 sqlite_cmd.CommandText = "INSERT INTO product (name, id, kg, price) VALUES('" + newProduct.Name + "', " + newProduct.Id + ", " + newProduct.Kg + "," + newProduct.Price + "); ";
@@ -57,6 +59,7 @@ namespace Ass1
         {
             try
             {
+                // Parameters to update the data within the table (Dom added)
                 SQLiteCommand sqlite_cmd;
                 sqlite_cmd = conn.CreateCommand();
                 sqlite_cmd.CommandText = "UPDATE product SET name = '" + oldProduct.Name + "', kg = " + oldProduct.Kg + ", price = " + oldProduct.Price + " WHERE id = " + oldProduct.Id + ";";
@@ -68,6 +71,7 @@ namespace Ass1
 
         public static void ReadData(SQLiteConnection conn)
         {
+            // Commands to allow data to be read and scripted onto the console screen (Dom added)
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
@@ -86,6 +90,7 @@ namespace Ass1
 
             WorkingList.ListChanged += MainWindow.List_ListChanged;
             conn.Close();
+            // CLosing the connection with the server (Dom added)
         }
     }
 }
