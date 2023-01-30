@@ -6,6 +6,7 @@ namespace Ass1
     //product object class
     class Product : INotifyPropertyChanged
     {
+        // Variables to be added into the class and setting up the respective get and set commands (dom added)
         string name;
         int id;
         int kg;
