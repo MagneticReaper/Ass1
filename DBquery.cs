@@ -90,7 +90,7 @@ namespace Ass1
 
             WorkingList.ListChanged += MainWindow.List_ListChanged;
             conn.Close();
-            // CLosing the connection with the server (Dom added)
+            // Closing the connection with the server (Dom added)
         }
     }
 }
