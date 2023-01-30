@@ -237,6 +237,7 @@ namespace Ass1
 
         public void MakeStyles()
         {
+            // Style list (dom added)
             gridStyles = new List<Style>();
             Style st1 = new Style() { TargetType = typeof(DataGridRow) };
             st1.Setters.Add(new Setter(DataGridRow.BackgroundProperty, Brushes.Transparent));
