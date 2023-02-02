@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 namespace Ass1
 {
-    //product object class
+    // product object class
     class Product : INotifyPropertyChanged
     {
+        // instance variables
         string name;
         int id;
         int kg;
@@ -13,6 +13,8 @@ namespace Ass1
         double subtotal;
         int added;
         public event PropertyChangedEventHandler PropertyChanged;
+
+        // parametized constructor
         public Product(string name, int id, int kg, double price)
         {
             this.name = name;
@@ -20,7 +22,11 @@ namespace Ass1
             this.kg = kg;
             this.price = price;
         }
+
+        // constructor
         public Product() { }
+
+        // getters and setters
         public string Name
         {
             get { return name; }
@@ -69,17 +75,19 @@ namespace Ass1
         }
         public double Subtotal
         {
-            get { return subtotal; }
+            get
+            { return subtotal; }
             set
             {
                 subtotal = value;
                 OnPropertyChanged();
             }
         }
+
+        // property changed trigger
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
     }
 }
